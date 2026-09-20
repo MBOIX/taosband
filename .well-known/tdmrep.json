@@ -11,7 +11,7 @@
       "tdm-policy": "https://mboix.github.io/taosband/tdm-policy.json"
     },
     {
-      "location": "/taosband/pro/*.zip",
+      "location": "/taosband/programmer/*.zip",
       "tdm-reservation": 1,
       "tdm-policy": "https://mboix.github.io/taosband/tdm-policy.json"
     }

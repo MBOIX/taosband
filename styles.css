@@ -1173,6 +1173,14 @@ section + section {
   margin-bottom: var(--espace-3);
 }
 
+/* Chapô sous un titre de bandeau : le résumé du groupe, puis ce que la page
+   contient. Longueur de ligne bornée pour rester lisible en pleine largeur. */
+.bandeau-titre__chapo {
+  color: var(--texte-2);
+  max-width: 60ch;
+  margin-top: var(--espace-2);
+}
+
 .bandeau-titre + section {
   margin-top: var(--espace-5);
 }

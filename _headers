@@ -2,7 +2,7 @@
   tdm-reservation: 1
   tdm-policy: <https://mboix.github.io/taosband/tdm-policy.json>; type="application/json"
 
-/taosband/pro/*.zip
+/taosband/programmer/*.zip
   tdm-reservation: 1
   tdm-policy: <https://mboix.github.io/taosband/tdm-policy.json>; type="application/json"
 
