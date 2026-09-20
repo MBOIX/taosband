@@ -1,0 +1,1470 @@
+/*
+ * Système de design du site TAOS — « le noir et la pierre ».
+ * Jetons et composants dérivés de la charte graphique du groupe.
+ * Conception mobile d'abord ; points de rupture en em, base 16 px du
+ * navigateur (indépendants du --taille-racine posé plus bas), autour de
+ * 600 / 900 / 1200 px : 37.5em / 56.25em / 75em.
+ *
+ * Fichier servi tel quel sur un dépôt public : il ne renvoie à aucun document
+ * interne et ne cite aucun chemin du poste de travail.
+ *
+ * Toute couleur, taille ou espacement utilisé ailleurs dans le site DOIT
+ * passer par les jetons ci-dessous. Aucun dégradé peint (fond, texte,
+ * bouton). Seuls fondus admis : des masques posés sur une image, photo ou
+ * texture, qui la dissolvent dans --fond, comme la pochette. Aucun rayon
+ * hors 0 (images, blocs) et 2px (boutons, champs).
+ */
+
+/* --- Polices, auto-hébergées, sous-ensemble latin ------------------------
+ * Les url() de ce fichier sont RELATIVES, jamais « /polices/… ». La feuille
+ * est copiée telle quelle à la racine du site, donc un chemin relatif s'y
+ * résout depuis cette racine, quelle qu'elle soit : celle du domaine en
+ * production, celle du sous-dossier en préproduction. Une barre oblique en
+ * tête renverrait, elle, à la racine du DOMAINE — et sous /taosband/ les
+ * polices et la texture ne se chargeraient plus. Le préfixe de chemin des
+ * pages (src/prefixe.mjs) ne passe pas ici : ce fichier n'est pas réécrit.
+ */
+
+@font-face {
+  font-family: "Archivo Expanded";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("polices/archivo-expanded-800.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Archivo Expanded";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("polices/archivo-expanded-900.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("polices/dosis-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("polices/dosis-600.woff2") format("woff2");
+}
+
+/* --- Jetons --------------------------------------------------------------
+ * Couleurs : charte graphique, au caractère près. Le teal #719195 des portraits
+ * n'est PAS un jeton : il n'arrive que par les photos, jamais peint en CSS.
+ */
+:root {
+  --fond: #030303;
+  --fond-2: #12170e;
+  --fond-3: #1e2616;
+  --texte: #e8e6d9;
+  --texte-2: #a3a898;
+  --blanc: #ffffff;
+  --kaki: #394324;
+  --kaki-2: #535d2f;
+  --kaki-3: #849356;
+  --kaki-4: #a9b57a;
+  --petrole: #2f4150;
+
+  /* Typographie : familles, avec un repli réel si le woff2 n'a pas encore chargé. */
+  --police-titres: "Archivo Expanded", "Arial Narrow", sans-serif;
+  --police-corps: "Dosis", "Segoe UI", Arial, sans-serif;
+
+  /* Échelle (base 18px, raison 1.25). 1rem = 18px car --taille-racine plus bas
+     règle la racine à 112.5% (18 / 16) : un rem se lit directement en 1/18e. */
+  --fs-petit: 0.8rem; /* 14,4px */
+  --fs-corps: 1rem; /* 18px */
+  --fs-intertitre: 1.25rem; /* 22,5px */
+  --fs-h3: 1.5556rem; /* 28px */
+  --fs-h2: 1.9444rem; /* 35px */
+  --fs-ouverture: clamp(4.5rem, 12vw, 9rem); /* 81 à 162px */
+
+  /* Espacement, base 8. */
+  --espace-1: 8px;
+  --espace-2: 16px;
+  --espace-3: 24px;
+  --espace-4: 40px;
+  --espace-5: 64px;
+  --espace-6: 104px;
+
+  /* Grille. */
+  --largeur-max: 1200px;
+  --gouttiere: 24px;
+
+  /* Mouvement. */
+  --duree-survol: 150ms;
+  --duree-lumiere: 1100ms;
+  --opacite-lumiere: 0.9;
+
+  /* Fissure : tracé maison (pas une image générée), 1 px --kaki-2, 1200×20,
+     commence et finit à y=10 pour se répéter sans raccord. */
+  --fissure: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 20' width='1200' height='20'%3E%3Cpath fill='none' stroke='%23535d2f' stroke-width='1' d='M0 10 L31 9.2 L58 12.4 L84 10.6 L119 14.1 L136 8.3 L172 9.7 L211 5.9 L232 10.2 L274 11.4 L309 7.1 L326 11.6 L368 9.3 L409 15.2 L431 10.1 L478 8.8 L516 12.7 L544 5.6 L568 9.9 L613 8.7 L649 14.6 L671 10 L716 7.4 L757 10.9 L781 16.3 L806 11.2 L851 8.6 L893 10.8 L918 4.7 L947 9.4 L992 12.6 L1027 7.9 L1064 10.3 L1108 13.9 L1136 9 L1168 10.7 L1200 10 M232 10.2 L248 4.1 L257 1.2 M544 5.6 L534 2 M781 16.3 L796 19.1 M918 4.7 L931 0.9 M1108 13.9 L1121 18.6'/%3E%3C/svg%3E");
+  --texture-lumiere: url("assets/textures/texture-pochette.avif");
+
+  color-scheme: dark;
+}
+
+/* Sous 600px : l'échelle d'espacement descend d'un cran (charte graphique). */
+@media (max-width: 37.49em) {
+  :root {
+    --espace-6: 64px;
+    --espace-5: 40px;
+    --espace-4: 24px;
+    --espace-3: 16px;
+    --espace-2: 8px;
+  }
+}
+
+/* --- Réinitialisation et base --------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* 112.5% de 16px = 18px : respecte une préférence de taille du navigateur
+     tout en donnant 1rem = 18px quand cette préférence vaut 16px. */
+  font-size: 112.5%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-corps);
+  font-weight: 400;
+  font-size: var(--fs-corps);
+  line-height: 1.55;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--police-titres);
+  font-weight: 800;
+  color: var(--texte);
+}
+
+/* h1 : clamp appliqué à toutes les largeurs, plutôt que la valeur fixe que
+   donne la table typographique de la charte graphique. */
+h1 {
+  font-size: clamp(1.8rem, 6vw, 2.45rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: var(--fs-intertitre);
+  line-height: 1.4;
+  text-transform: none;
+}
+
+p {
+  margin: 0;
+  max-width: 70ch;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--kaki-3);
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--kaki-4);
+}
+
+a,
+button {
+  transition: color var(--duree-survol) ease, border-color var(--duree-survol) ease,
+    background-color var(--duree-survol) ease;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Focus visible uniquement au clavier : anneau 2px kaki-4, décalé de 2px. */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--kaki-4);
+  outline-offset: 2px;
+}
+
+/* Lien d'évitement : hors écran par défaut, visible au focus. */
+.lien-evitement {
+  position: absolute;
+  top: -100%;
+  left: var(--espace-2);
+  z-index: 100;
+  padding: var(--espace-2) var(--espace-3);
+  background: var(--fond-2);
+  color: var(--blanc);
+  border: 1px solid var(--kaki-3);
+}
+
+.lien-evitement:focus {
+  top: var(--espace-2);
+}
+
+/* --- Mise en page générale ------------------------------------------------ */
+
+.conteneur {
+  max-width: var(--largeur-max);
+  margin-inline: auto;
+  padding-inline: var(--espace-3);
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gouttiere);
+}
+
+main {
+  display: block;
+}
+
+section + section {
+  margin-top: var(--espace-6);
+}
+
+/* --- Composants : boutons et liens ----------------------------------------- */
+
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espace-1);
+  min-height: 44px;
+  padding: var(--espace-2) var(--espace-3);
+  border-radius: 2px;
+  font-family: var(--police-corps);
+  font-weight: 600;
+  font-size: var(--fs-corps);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.bouton--principal {
+  background: var(--kaki-3);
+  color: var(--fond);
+}
+
+.bouton--principal:hover {
+  background: var(--kaki-4);
+  color: var(--fond);
+}
+
+.bouton--secondaire {
+  border-color: var(--texte);
+  color: var(--texte);
+}
+
+.bouton--secondaire:hover {
+  border-color: var(--kaki-4);
+  color: var(--kaki-4);
+}
+
+/* --- Navigation ------------------------------------------------------------
+ * Barre haute : wordmark réduit à gauche, cinq entrées à droite. Sous 900px,
+ * les entrées se replient dans un <details> natif — bouton implicite,
+ * utilisable au clavier et au lecteur d'écran, sans JavaScript.
+ */
+/* Fissure : sépare l'en-tête du corps de page, à la place d'un filet droit. */
+.entete::after {
+  content: "";
+  display: block;
+  height: 20px;
+  background: var(--fissure) repeat-x center / 1200px 20px;
+}
+
+.entete__ligne {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espace-2);
+  padding-block: var(--espace-2);
+}
+
+.entete__wordmark {
+  color: var(--blanc);
+  display: block;
+  line-height: 0;
+}
+
+.entete__wordmark svg {
+  width: 96px;
+  height: auto;
+}
+
+.nav-principale {
+  margin: 0;
+}
+
+.nav-principale__bouton {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--espace-1) var(--espace-2);
+  font-family: var(--police-titres);
+  font-weight: 800;
+  font-size: var(--fs-petit);
+  letter-spacing: 0.04em;
+  color: var(--texte);
+  border: 1px solid var(--kaki-2);
+  border-radius: 2px;
+  list-style: none;
+}
+
+.nav-principale__bouton::-webkit-details-marker {
+  display: none;
+}
+
+.nav-principale__bouton::marker {
+  content: "";
+}
+
+.nav-principale[open] .nav-principale__bouton {
+  border-color: var(--kaki-3);
+}
+
+.nav-principale__liste {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--espace-2);
+}
+
+.nav-principale__liste li + li {
+  border-top: 1px solid var(--kaki-2);
+}
+
+.nav-principale__liste a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--texte);
+  text-decoration: none;
+}
+
+.nav-principale__liste a:hover,
+.nav-principale__liste a[aria-current="page"] {
+  color: var(--kaki-4);
+}
+
+@media (min-width: 56.25em) {
+  .entete__wordmark svg {
+    width: 112px;
+  }
+
+  .nav-principale__bouton {
+    display: none;
+  }
+
+  /* Chrome (≥ 2024) rend le contenu replié via le pseudo-élément interne
+     ::details-content (content-visibility: hidden, block-size: 0) plutôt
+     qu'un simple display:none sur les enfants : il faut le neutraliser
+     explicitement pour que la liste reste visible en permanence ici. */
+  .nav-principale::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+    overflow: visible !important;
+  }
+
+  .nav-principale__liste {
+    display: flex !important;
+    flex-direction: row;
+    margin-top: 0;
+    gap: var(--espace-4);
+  }
+
+  .nav-principale__liste li + li {
+    border-top: none;
+  }
+
+  .nav-principale__liste a {
+    min-height: auto;
+  }
+}
+
+/* --- Bloc d'ouverture -------------------------------------------------------
+ * Seule dépense de hardiesse de la page : photo pleine largeur, wordmark
+ * ancré, un unique moment animé à l'apparition (charte graphique).
+ */
+.ouverture {
+  position: relative;
+  isolation: isolate;
+  background: var(--fond);
+  overflow: hidden;
+}
+
+/* La lumière de la pochette : bokeh en mode screen (le noir de la texture
+   disparaît sur la photo), adouci par un masque radial ancré en haut à gauche. */
+.ouverture__lumiere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: min(100%, 1200px);
+  aspect-ratio: 88 / 62;
+  background: var(--texture-lumiere) no-repeat left top / cover;
+  mix-blend-mode: screen;
+  opacity: var(--opacite-lumiere);
+  -webkit-mask-image: radial-gradient(ellipse 80% 85% at 20% 15%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 85% at 20% 15%, #000 15%, transparent 75%);
+}
+
+.ouverture__photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--petrole);
+  /* La photo se dissout dans le noir vers le bas, comme la pochette. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 96%);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 96%);
+}
+
+.ouverture__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: url(#bichromie); /* remplace grayscale(1) */
+}
+
+/* Sous 600 px le cadre est en 4/5 et la photo en 2/1 : `cover` la met à
+   l'échelle sur la hauteur, donc en masque déjà 60 % de la largeur — et le
+   `25%` vertical d'`object-position` n'y sert à rien. On remplace ce recadrage
+   par un rail de 2,5 largeurs de cadre, déplacé au `transform`, seule propriété
+   qui s'anime sans repeindre.
+
+   Deux mouvements s'y superposent, d'où deux étages : `picture` porte la dérive
+   au défilement, `img` le travelling d'ouverture. Les composer sur un seul
+   élément supposerait deux animations sur la même propriété, où la dernière
+   déclarée écrase l'autre. Les pourcentages des deux se lisent sur la même
+   largeur, celle du rail.
+
+   Deux tirages, portés par deux propriétés que `ouverture.js` réécrit à chaque
+   chargement : sur quelle carte de membre le rail s'arrête, et dans quel sens
+   il voyage. Ils sont indépendants — six combinaisons. */
+@media (max-width: 37.49em) {
+  .ouverture__photo {
+    position: relative;
+
+    /* Les trois cartes centrables, mesurées sur la photo : orange -11,9 %,
+       jaune -29,4 %, rose -47,7 % de la largeur du rail. Le vert (+6,1 %) et
+       le turquoise (-65,2 %) tombent hors du rail — les centrer découvrirait
+       un bord vide. La dérive va les chercher à leur place. */
+    --carte: -29.4%; /* la jaune, celle du milieu, à défaut de tirage */
+
+    /* +1 : le regard voyage vers la gauche de la photo ; -1 : vers la droite.
+       Le travelling entre par le côté opposé et la dérive prolonge le même
+       geste, si bien que le tout se lit comme un seul mouvement. */
+    --sens: -1;
+
+    /* 10 %, et pas davantage : c'est la marge qui reste des deux côtés pour la
+       carte orange et pour la rose, les deux plus excentrées des trois. */
+    --course: 10%;
+  }
+
+  .ouverture__photo picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    aspect-ratio: 2 / 1; /* celui de la photo du groupe, cf. assets/INDEX.json */
+  }
+
+  .ouverture__photo img {
+    transform: translateX(var(--carte));
+  }
+
+  /* Défilement horizontal au doigt, armé par `ouverture.js` — amélioration
+     progressive, comme le tirage au sort juste au-dessus. Le cadrage de départ
+     devient une position de défilement, qui se pose en pixels : le CSS ne sait
+     pas le faire, donc sans script le rail reste sur le système de
+     transformations ci-dessus, intact.
+
+     Le rail repasse dans le flux, car c'est sa largeur mise en page — et non sa
+     transformation — qui donne au cadre sa course de défilement. `--carte`
+     tombe alors à zéro : les deux animations gardent leur débattement de ±10 %,
+     mais autour de la position de défilement au lieu d'une transformation de
+     base. Les keyframes n'ont pas à le savoir.
+
+     `overflow-x` reste à `hidden` pendant l'ouverture : un cadre en `hidden`
+     se défile encore par script, jamais au doigt. Le travelling joue donc sans
+     que personne puisse le prendre à contre-sens, et `ouverture.js` ouvre la
+     course une fois l'ouverture finie. */
+  .ouverture__photo--defilable {
+    --carte: 0%;
+    overflow-x: hidden;
+    overscroll-behavior-x: contain;
+  }
+
+  .ouverture__photo--defilable picture {
+    position: static;
+  }
+
+  .ouverture__photo--defilable[data-defilement="libre"] {
+    overflow-x: auto;
+  }
+
+  /* Le cadre devient un élément focalisable : au clavier, les flèches doivent
+     pouvoir parcourir le rail comme le doigt le fait. */
+  .ouverture__photo--defilable:focus-visible {
+    outline: 2px solid var(--kaki-4);
+    outline-offset: -2px;
+  }
+}
+
+.ouverture__contenu {
+  padding-block: var(--espace-4);
+}
+
+.ouverture__eyebrow {
+  font-family: var(--police-titres);
+  font-weight: 800;
+  font-size: var(--fs-intertitre);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texte-2);
+  margin-bottom: var(--espace-2);
+}
+
+.ouverture__wordmark {
+  font-size: var(--fs-ouverture);
+  line-height: 0.95;
+}
+
+.ouverture__wordmark svg {
+  width: 4.6em;
+  max-width: 100%;
+  height: auto;
+  color: var(--blanc);
+}
+
+.ouverture__pitch {
+  margin-top: var(--espace-3);
+  font-size: var(--fs-intertitre);
+  line-height: 1.4;
+  color: var(--texte);
+  max-width: 60ch;
+}
+
+/* Un seul moment orchestré (charte graphique) : la lumière, puis la photo, puis
+   le contenu, dans cet ordre, calé sur --duree-lumiere (1100ms = fin du
+   dernier temps). */
+@media (prefers-reduced-motion: no-preference) {
+  .ouverture__lumiere {
+    animation: ouverture-lumiere calc(var(--duree-lumiere) * 0.5455) ease-out both; /* 600ms */
+  }
+
+  .ouverture__photo {
+    animation: ouverture-photo calc(var(--duree-lumiere) * 0.6364) ease-out
+      calc(var(--duree-lumiere) * 0.2273) both; /* 700ms, délai 250ms */
+  }
+
+  .ouverture__contenu {
+    animation: ouverture-contenu calc(var(--duree-lumiere) * 0.4545) ease-out
+      calc(var(--duree-lumiere) * 0.5455) both; /* 500ms, délai 600ms */
+  }
+}
+
+/* Quatrième temps du moment orchestré, sous 600 px seulement : la photo entre
+   décadrée du côté opposé au voyage et glisse jusqu'à sa carte, sur le même
+   départ que son fondu. Le tirage tombe pendant les 250 ms où la photo est
+   encore à opacité 0 : la bascule d'une combinaison à l'autre ne se voit pas. */
+@media (max-width: 37.49em) and (prefers-reduced-motion: no-preference) {
+  .ouverture__photo img {
+    animation: ouverture-travelling calc(var(--duree-lumiere) * 1.4545)
+      ease-out calc(var(--duree-lumiere) * 0.2273) both; /* 1600ms, délai 250ms */
+  }
+}
+
+/* Cinquième temps, qui n'en est plus un : passé l'ouverture, le regard continue
+   de voyager dans le sens tiré au sort, au rythme du défilement. L'animation
+   est pilotée par une ligne de temps de défilement, donc tenue hors du fil
+   principal : aucun écouteur, aucune mesure en JavaScript. Là où le navigateur
+   ne sait pas le faire, ouverture.js rejoue le même mouvement à la main. */
+@supports (animation-timeline: scroll()) {
+  @media (max-width: 37.49em) and (prefers-reduced-motion: no-preference) {
+    .ouverture__photo picture {
+      animation: ouverture-derive linear both;
+
+      /* Le défilement de la page, et non la position du bloc à l'écran. Deux
+         raisons, toutes deux mesurées. Un `view()` se mesurerait contre le
+         cadre de la photo, qui est un `overflow: hidden` — donc, pour le
+         navigateur, un conteneur de défilement qui ne défile jamais : la
+         progression restait à zéro. Et une ligne de temps accrochée au bloc
+         d'ouverture entier donnait sa course une fois la photo sortie de
+         l'écran : le mouvement existait sans se voir. */
+      animation-timeline: scroll(root block);
+
+      /* 125vw, c'est exactement la hauteur de la photo : un cadre en 4/5 sur
+         toute la largeur de l'écran. La dérive est donc épuisée au moment où
+         la photo achève de sortir par le haut, pas longtemps après. */
+      animation-range: 0 125vw;
+    }
+  }
+}
+
+@keyframes ouverture-lumiere {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--opacite-lumiere);
+  }
+}
+
+@keyframes ouverture-photo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ouverture-contenu {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Le rail court de 0 % (bord gauche de la photo) à -60 % (bord droit) : au-delà,
+   un bord vide apparaît. Le travelling part une course en amont de la carte
+   tirée et s'arrête dessus ; la dérive repart de là, dans le même sens, pour
+   une course de plus. Les deux extrêmes valent donc `carte - sens x course` et
+   `carte + sens x course`, et c'est ce qui borne la course à 10 % : la carte
+   orange (-11,9 %) n'a que 11,9 % de marge vers 0, la rose (-47,7 %) n'en a
+   que 12,3 % vers -60. */
+@keyframes ouverture-travelling {
+  from {
+    transform: translateX(calc(var(--carte) - var(--sens) * var(--course)));
+  }
+  to {
+    transform: translateX(var(--carte));
+  }
+}
+
+@keyframes ouverture-derive {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--sens) * var(--course)));
+  }
+}
+
+@media (min-width: 37.5em) {
+  .ouverture__photo {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (min-width: 56.25em) {
+  .ouverture {
+    display: grid;
+  }
+
+  .ouverture__photo {
+    aspect-ratio: auto;
+    grid-area: 1 / 1;
+    height: 80vh;
+    max-height: 900px;
+  }
+
+  .ouverture__contenu {
+    grid-area: 1 / 1;
+    position: relative;
+    z-index: 3;
+    align-self: end;
+    padding-bottom: var(--espace-5);
+  }
+}
+
+/* --- Bandeau prochaine date --------------------------------------------------
+ * « ligne de date » : requête de conteneur, pas de point de rupture de page.
+ */
+.bandeau-date {
+  background: var(--fond-2);
+  border-left: 4px solid var(--kaki-3);
+  padding: var(--espace-3);
+}
+
+.bandeau-date__ligne {
+  container-type: inline-size;
+  container-name: ligne-date;
+}
+
+.bandeau-date__entete {
+  font-family: var(--police-titres);
+  font-weight: 800;
+  font-size: var(--fs-petit);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texte-2);
+  margin-bottom: var(--espace-2);
+}
+
+.bandeau-date__corps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-2);
+}
+
+.bandeau-date__corps > .bouton {
+  width: 100%;
+}
+
+.bandeau-date__quand {
+  font-family: var(--police-titres);
+  font-weight: 800;
+  font-size: var(--fs-intertitre);
+  font-variant-numeric: tabular-nums;
+}
+
+.bandeau-date__lieu {
+  font-family: var(--police-corps);
+  font-weight: 600;
+  font-size: var(--fs-corps);
+  color: var(--texte);
+}
+
+/* Palier tablette (charte graphique) : date et lieu sur une même ligne, le
+   bouton reste dessous. */
+@container ligne-date (min-width: 32rem) {
+  .bandeau-date__texte-groupe {
+    display: flex;
+    align-items: baseline;
+    gap: var(--espace-3);
+  }
+}
+
+/* Palier desktop : tout tient sur une seule ligne. */
+@container ligne-date (min-width: 44rem) {
+  .bandeau-date__corps {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bandeau-date__corps > .bouton {
+    width: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* --- Écouter ---------------------------------------------------------------- */
+
+.ecouter__bloc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-3);
+  margin-top: var(--espace-3);
+}
+
+/* Colonne pochette : elle contient soit la façade Bandcamp (image, bouton de
+   lecture et légende, déjà en 1:1 via .facade-audio__image), soit, à défaut
+   de lecteur possible, l'image seule — jamais les deux (une seule pochette
+   par sortie, charte graphique). */
+.ecouter__pochette > picture {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--petrole);
+  overflow: hidden;
+}
+
+.ecouter__pochette img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ecouter__titre {
+  margin-bottom: var(--espace-2);
+}
+
+.ecouter__resume {
+  color: var(--texte-2);
+  margin-bottom: var(--espace-3);
+}
+
+@media (min-width: 56.25em) {
+  .ecouter__bloc {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .ecouter__pochette {
+    flex: 0 0 40%;
+    max-width: 400px;
+  }
+
+  .ecouter__texte {
+    flex: 1 1 auto;
+  }
+}
+
+/* Façade qui porte la pochette (accueil, pro) : l'image occupe toute la
+   colonne, 400 px au plus, le bouton de lecture ancré dessus plutôt qu'à côté.
+   La façade sans image de la page sortie garde sa barre d'action compacte. */
+.facade-audio:has(.facade-audio__image) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  max-width: 400px;
+  border: none;
+  background: none;
+}
+
+.facade-audio__image {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--petrole);
+  overflow: hidden;
+}
+
+.facade-audio__image picture,
+.facade-audio__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Bouton ancré en bas à gauche de la pochette, en écho au bloc titre de la
+   pochette. */
+.facade-audio__image .facade-audio__bouton {
+  position: absolute;
+  left: var(--espace-3);
+  bottom: var(--espace-3);
+  width: 64px;
+  height: 64px;
+}
+
+.facade-audio:has(.facade-audio__image) .facade-audio__libelles {
+  padding-top: var(--espace-2);
+}
+
+/* Façade « clic pour charger ». Élément interactif natif (lien) : aucune
+   iframe tant que le clic n'a pas eu lieu. */
+.facade-audio {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  padding: var(--espace-2);
+  background: var(--fond-2);
+  border: 1px solid var(--kaki-2);
+  text-decoration: none;
+  color: var(--texte);
+  margin-bottom: var(--espace-3);
+  max-width: 32rem;
+}
+
+.facade-audio:hover {
+  border-color: var(--kaki-4);
+}
+
+/* Le bouton porte l'action : il ne se superpose plus a une pochette deja
+   affichee juste au-dessus, il est l'element principal de la facade. */
+.facade-audio__bouton {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--kaki-4);
+  color: var(--fond);
+}
+
+.facade-audio:hover .facade-audio__bouton {
+  background: var(--kaki-3);
+}
+
+.facade-audio:focus-visible {
+  outline: 2px solid var(--kaki-4);
+  outline-offset: 2px;
+}
+
+.facade-audio__icone {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+}
+
+.facade-audio__libelles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.facade-audio__action {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.facade-audio__texte {
+  display: block;
+  font-size: var(--fs-petit);
+  line-height: 1.4;
+  color: var(--texte-2);
+}
+
+.facade-audio__iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* « ligne d'écoute » : liens vers les autres plateformes, requête de
+   conteneur pour passer d'une colonne à une ligne. */
+.plateformes-liens {
+  container-type: inline-size;
+  container-name: ligne-ecoute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-2) var(--espace-3);
+}
+
+.plateformes-liens a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+/* --- Vous programmez ? ------------------------------------------------------ */
+
+.pro-invitation__resume {
+  margin-top: var(--espace-2);
+  margin-bottom: var(--espace-3);
+  color: var(--texte);
+}
+
+/* --- Listes de dates (vocabulaire partagé, gabarits concerts/groupe) --------- */
+
+.liste-dates {
+  border-top: 1px solid var(--kaki-2);
+}
+
+.liste-dates__ligne {
+  container-type: inline-size;
+  container-name: ligne-date;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-1);
+  padding-block: var(--espace-2);
+  border-bottom: 1px solid var(--kaki-2);
+}
+
+.liste-dates__date {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+@container ligne-date (min-width: 32rem) {
+  .liste-dates__ligne {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+
+/* --- Pied de page ------------------------------------------------------------ */
+
+.pied-de-page {
+  background: var(--fond-2);
+  padding-bottom: var(--espace-4);
+  margin-top: var(--espace-6);
+  text-align: center;
+}
+
+/* Fissure : sépare le pied de page du corps de page. Bande noire (--fond),
+   le fond olive du pied de page commence sous elle. */
+.pied-de-page::before {
+  content: "";
+  display: block;
+  height: 20px;
+  margin: 0 0 var(--espace-4);
+  background: var(--fond) var(--fissure) repeat-x center / 1200px 20px;
+}
+
+.pied-de-page__contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espace-1);
+  margin-bottom: var(--espace-3);
+}
+
+.pied-de-page__contact svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--texte-2);
+}
+
+.pied-de-page__reseaux {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--espace-2);
+  margin-bottom: var(--espace-3);
+}
+
+.pied-de-page__reseaux a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--texte-2);
+}
+
+.pied-de-page__reseaux a:hover {
+  color: var(--kaki-4);
+}
+
+.pied-de-page__reseaux svg {
+  width: 20px;
+  height: 20px;
+}
+
+.pied-de-page__legal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espace-1);
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+}
+
+.pied-de-page__legal a {
+  color: var(--texte-2);
+}
+
+@media (min-width: 37.5em) {
+  .pied-de-page__legal {
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--espace-3);
+  }
+}
+
+/* --- Utilitaire ---------------------------------------------------------- */
+
+.visuellement-masque {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Ajouts des gabarits ---------------------------------------------------
+ * Composants nécessaires aux neuf gabarits du lot 1 (groupe, musique, sortie,
+ * concerts, date, pro, contact, mentions-legales, 404), absents du système de
+ * design initial. Uniquement des jetons déjà déclarés plus haut.
+ */
+
+/* Correctif : la requête de conteneur de .liste-dates__ligne (plus haut dans
+   ce fichier) se cible elle-même — un élément ne peut pas interroger le
+   conteneur qu'il établit lui-même, la règle @container correspondante ne
+   s'applique donc jamais. Repli en requête de page, au même palier que le
+   tableau charte graphique (« une ligne » dès 600px). */
+@media (min-width: 37.5em) {
+  .liste-dates__ligne {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--espace-3);
+  }
+}
+
+/* Bandeau de titre, pages intérieures : même lumière que le bloc d'ouverture,
+   en plus discret, posée derrière le h1 (charte graphique). */
+.bandeau-titre {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--fond-2);
+  padding-block: var(--espace-4);
+}
+
+.bandeau-titre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: min(100%, 900px);
+  aspect-ratio: 88 / 62;
+  background: var(--texture-lumiere) no-repeat left top / cover;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(ellipse 75% 80% at 15% 10%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 75% 80% at 15% 10%, #000 0%, transparent 72%);
+}
+
+.bandeau-titre h1 {
+  color: var(--blanc);
+}
+
+.bandeau-titre .fil-ariane {
+  margin-bottom: var(--espace-3);
+}
+
+.bandeau-titre + section {
+  margin-top: var(--espace-5);
+}
+
+/* Modificateur page « sortie » : pochette et h1 alignés en bas dès 900px. */
+.bandeau-titre--sortie .bandeau-titre__meta {
+  color: var(--texte-2);
+  margin-top: var(--espace-1);
+}
+
+@media (min-width: 56.25em) {
+  .bandeau-titre--sortie .bandeau-titre__corps {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--espace-4);
+  }
+
+  .bandeau-titre--sortie .bandeau-titre__pochette {
+    flex: 0 0 320px;
+    width: 320px;
+  }
+}
+
+/* Bio : les paragraphes se suivent sans marge par défaut (p { margin: 0 }). */
+.bio-courte p + p,
+.bio-longue__section p + p {
+  margin-top: var(--espace-2);
+}
+
+/* Fil d'Ariane, pages profondes (une sortie, une date). */
+.fil-ariane {
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+  margin-bottom: var(--espace-3);
+}
+
+.fil-ariane ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-1);
+}
+
+.fil-ariane a {
+  color: var(--texte-2);
+}
+
+.fil-ariane li:not(:last-child)::after {
+  content: "/";
+  margin-left: var(--espace-1);
+  color: var(--kaki-2);
+}
+
+/* Ligne de boutons ou de liens (téléchargements, réseaux, actions groupées). */
+.groupe-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-2);
+  margin-top: var(--espace-3);
+}
+
+/* Line-up (page « le groupe ») : 2 portraits par ligne sous 600px (le
+   cinquième pleine largeur), 3 de 600 à 900px, 5 au-delà (charte graphique). */
+.ligne-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espace-3);
+}
+
+.ligne-up li:nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+/* Portraits 5:8 (charte graphique). L'attribut HTML height fige la hauteur en
+   pixels tant qu'aucune règle CSS ne la redéfinit : sans ceci, max-width:100%
+   réduit la largeur de l'image mais pas sa hauteur, qui reste à sa valeur
+   intrinsèque et déforme la mise en page. */
+.ligne-up picture {
+  display: block;
+  aspect-ratio: 5 / 8;
+  background: var(--petrole);
+  overflow: hidden;
+}
+
+.ligne-up picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ligne-up__nom {
+  margin-top: var(--espace-2);
+}
+
+.ligne-up__role {
+  color: var(--texte-2);
+  font-size: var(--fs-petit);
+  margin-bottom: var(--espace-1);
+}
+
+@media (min-width: 37.5em) {
+  .ligne-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ligne-up li:nth-child(5) {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 56.25em) {
+  .ligne-up {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Grille de photos (page pro). */
+.grille-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espace-2);
+}
+
+/* Photos de scène, ratio proche de 3:2 (charte graphique). Même raison qu'au-
+   dessus (.ligne-up) : fixe la hauteur, sinon figée par l'attribut HTML. */
+.grille-photos picture {
+  display: block;
+  aspect-ratio: 3 / 2;
+  background: var(--petrole);
+  overflow: hidden;
+}
+
+.grille-photos picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grille-photos figcaption {
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+  margin-top: var(--espace-1);
+  /* « freakphotography666 » est un mot insécable plus long que la colonne
+     sous 400 px : sans coupure il pousse la page en défilement horizontal. */
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 37.5em) {
+  .grille-photos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 56.25em) {
+  .grille-photos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Liste de caractéristiques clé/valeur (crédits d'une sortie, mentions
+   légales). */
+/* `minmax(0, …)` sur les deux colonnes : sans cela, une valeur longue et
+   insecable pousse la grille au-dela de son conteneur et fait deborder la
+   page horizontalement sur mobile. */
+.dl-caracteristiques {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: var(--espace-1) var(--espace-3);
+}
+
+.dl-caracteristiques dt,
+.dl-caracteristiques dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.dl-caracteristiques dt {
+  color: var(--texte-2);
+}
+
+.dl-caracteristiques dd {
+  margin: 0;
+}
+
+/* Historique des concerts par année (page « concerts »). */
+.concerts-annee + .concerts-annee {
+  margin-top: var(--espace-4);
+}
+
+.concerts-annee h3 {
+  margin-bottom: var(--espace-2);
+}
+
+.concerts-compteur {
+  color: var(--texte-2);
+  margin-top: var(--espace-4);
+}
+
+/* Défilement horizontal contenu, jamais la page entière (charte graphique). */
+.tableau-scroll {
+  overflow-x: auto;
+}
+
+/* Tracklist numérotée (page d'une sortie). Tableau à trois colonnes, tient
+   tel quel (charte graphique) ; défile dans son conteneur si la largeur manque. */
+.tracklist {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--espace-3);
+}
+
+.tracklist th {
+  text-align: left;
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+  font-weight: 600;
+  padding-block: var(--espace-1);
+  border-bottom: 1px solid var(--kaki-2);
+}
+
+.tracklist td {
+  padding-block: var(--espace-2);
+  border-bottom: 1px solid var(--kaki-2);
+}
+
+.tracklist__position,
+.tracklist__duree {
+  font-variant-numeric: tabular-nums;
+  color: var(--texte-2);
+  white-space: nowrap;
+}
+
+.tracklist__duree {
+  text-align: right;
+}
+
+/* Pochette basse définition (décision 18) : taille réelle, jamais agrandie. */
+.pochette-basse-definition {
+  background: var(--fond-2);
+  display: inline-block;
+}
+
+/* Liste des sorties (page « musique ») : un bloc par sortie, séparés par un
+   filet, même vocabulaire visuel que .ecouter__bloc de l'accueil. */
+.liste-sorties > li + li {
+  margin-top: var(--espace-5);
+  padding-top: var(--espace-5);
+  border-top: 1px solid var(--kaki-2);
+}
+
+/* Aperçu du logo (page pro) : une variante par fond, pour vérifier la
+   lisibilité du wordmark sur fond clair et sur fond sombre. */
+.apercu-logo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espace-2);
+  margin-top: var(--espace-3);
+}
+
+.apercu-logo__vignette {
+  flex: 1 1 200px;
+  padding: var(--espace-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Les deux aperçus partagent le même tracé (un <use> du symbole wordmark) :
+   seule la couleur héritée les distingue, comme les deux fichiers livrés. */
+.apercu-logo__vignette--sombre {
+  background: var(--fond-2);
+  color: var(--blanc);
+}
+
+.apercu-logo__vignette--claire {
+  background: var(--blanc);
+  color: var(--fond);
+}
+
+.apercu-logo__vignette svg {
+  width: 140px;
+  height: auto;
+}
+
+/* Bloc d'erreur 404 : centré, calme. */
+.page-erreur {
+  padding-block: var(--espace-6);
+  text-align: center;
+}
+
+.page-erreur .groupe-boutons {
+  justify-content: center;
+}

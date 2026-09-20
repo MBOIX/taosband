@@ -1,0 +1,11 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DigitalDocument",
+  "name": "Politique de fouille de textes et de données — TAOS",
+  "about": "https://mboix.github.io/taosband/mentions-legales/",
+  "usagesAutorises": [
+    "presse",
+    "programmation de concerts"
+  ],
+  "creditRequis": true
+}

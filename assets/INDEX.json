@@ -1,0 +1,314 @@
+{
+  "taos-live-1": {
+    "base": "taos-live-1",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1273,
+    "hauteur": 716,
+    "rapport": "1273/716",
+    "alt": "Planche de six photos de concert en noir et blanc, montrant tour à tour un guitariste chevelu de profil, le chanteur au micro le poing pointé vers le public, un batteur en action portant une casquette et un tee-shirt TAOS, un bassiste éclairé de face et un batteur criant derrière ses cymbales.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-live-1-480.avif",
+        "960": "assets/photos/taos-live-1-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-live-1-480.webp",
+        "960": "assets/photos/taos-live-1-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-live-1-960.jpg"
+  },
+  "taos-live-2": {
+    "base": "taos-live-2",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 2048,
+    "hauteur": 1365,
+    "rapport": "2048/1365",
+    "alt": "Quatre musiciens de TAOS sur une petite scène, en noir et blanc : un guitariste à gauche en tee-shirt TAOS, le chanteur au centre penché sur son micro, le batteur derrière sa caisse claire et un bassiste de dos à droite.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-live-2-480.avif",
+        "960": "assets/photos/taos-live-2-960.avif",
+        "1600": "assets/photos/taos-live-2-1600.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-live-2-480.webp",
+        "960": "assets/photos/taos-live-2-960.webp",
+        "1600": "assets/photos/taos-live-2-1600.webp"
+      }
+    },
+    "repli": "assets/photos/taos-live-2-1600.jpg"
+  },
+  "taos-live-3": {
+    "base": "taos-live-3",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 2048,
+    "hauteur": 1365,
+    "rapport": "2048/1365",
+    "alt": "Le chanteur de TAOS sur scène, tête renversée en arrière, bouche ouverte, un bras tendu vers le public en tee-shirt portant l'inscription TAOS Lâchés dans l'arène, avec le batteur visible en arrière-plan sous un éclairage bleuté.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-live-3-480.avif",
+        "960": "assets/photos/taos-live-3-960.avif",
+        "1600": "assets/photos/taos-live-3-1600.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-live-3-480.webp",
+        "960": "assets/photos/taos-live-3-960.webp",
+        "1600": "assets/photos/taos-live-3-1600.webp"
+      }
+    },
+    "repli": "assets/photos/taos-live-3-1600.jpg"
+  },
+  "taos-portrait-arnaud": {
+    "base": "taos-portrait-arnaud",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène en noir et blanc d'Arnaud, bassiste de TAOS, jouant de sa basse, éclairé de face dans la pénombre.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-arnaud-480.avif",
+        "960": "assets/photos/taos-portrait-arnaud-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-arnaud-480.webp",
+        "960": "assets/photos/taos-portrait-arnaud-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-arnaud-960.jpg"
+  },
+  "taos-portrait-etienne": {
+    "base": "taos-portrait-etienne",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène en noir et blanc d'Etienne, guitariste de TAOS, cheveux longs et barbe, tête renversée en arrière et bouche ouverte, sangle de guitare visible sur l'épaule.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-etienne-480.avif",
+        "960": "assets/photos/taos-portrait-etienne-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-etienne-480.webp",
+        "960": "assets/photos/taos-portrait-etienne-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-etienne-960.jpg"
+  },
+  "taos-portrait-jack": {
+    "base": "taos-portrait-jack",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène en noir et blanc de Jack, chanteur de TAOS, crâne rasé, micro à la main et bras tendu pointé vers le public.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-jack-480.avif",
+        "960": "assets/photos/taos-portrait-jack-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-jack-480.webp",
+        "960": "assets/photos/taos-portrait-jack-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-jack-960.jpg"
+  },
+  "taos-portrait-micka": {
+    "base": "taos-portrait-micka",
+    "categorie": "photo",
+    "credit": "paul",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène teinté de bleu-vert de Micka, batteur de TAOS, crâne rasé, bouche ouverte en train de crier, un écouteur intra-auriculaire à l'oreille, en pleine frappe derrière ses cymbales.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-micka-480.avif",
+        "960": "assets/photos/taos-portrait-micka-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-micka-480.webp",
+        "960": "assets/photos/taos-portrait-micka-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-micka-960.jpg"
+  },
+  "taos-portrait-steve": {
+    "base": "taos-portrait-steve",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène teinté de bleu-vert et au grain marqué de Steve, guitariste de TAOS, casquette portée à l'envers, penché près d'une batterie et d'un amplificateur, en tee-shirt TAOS.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-steve-480.avif",
+        "960": "assets/photos/taos-portrait-steve-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-steve-480.webp",
+        "960": "assets/photos/taos-portrait-steve-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-steve-960.jpg"
+  },
+  "taos-groupe": {
+    "base": "taos-groupe",
+    "categorie": "photo",
+    "credit": null,
+    "largeur": 6400,
+    "hauteur": 3200,
+    "rapport": "2/1",
+    "alt": "Montage de cinq portraits en pied des membres de TAOS, chacun adossé à un mur de briques et tiré comme un polaroid incliné, virés successivement au vert, à l'orange, au jaune, au rose et au turquoise sur un fond bleu nuit.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-groupe-480.avif",
+        "960": "assets/photos/taos-groupe-960.avif",
+        "1600": "assets/photos/taos-groupe-1600.avif",
+        "2400": "assets/photos/taos-groupe-2400.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-groupe-480.webp",
+        "960": "assets/photos/taos-groupe-960.webp",
+        "1600": "assets/photos/taos-groupe-1600.webp",
+        "2400": "assets/photos/taos-groupe-2400.webp"
+      }
+    },
+    "repli": "assets/photos/taos-groupe-2400.jpg"
+  },
+  "pochette-laches-dans-larene": {
+    "base": "pochette-laches-dans-larene",
+    "categorie": "pochette",
+    "credit": null,
+    "largeur": 1600,
+    "hauteur": 1600,
+    "rapport": "1/1",
+    "alt": "Pochette de l'album Lâchés dans l'arène : silhouette illustrée d'un casque de guerrier antique en vert et noir, superposée à une photo de sous-bois, avec le nom TAOS et le titre de l'album inscrits en blanc en bas à droite.",
+    "derives": {
+      "avif": {
+        "480": "assets/pochettes/pochette-laches-dans-larene-480.avif",
+        "960": "assets/pochettes/pochette-laches-dans-larene-960.avif",
+        "1600": "assets/pochettes/pochette-laches-dans-larene-1600.avif"
+      },
+      "webp": {
+        "480": "assets/pochettes/pochette-laches-dans-larene-480.webp",
+        "960": "assets/pochettes/pochette-laches-dans-larene-960.webp",
+        "1600": "assets/pochettes/pochette-laches-dans-larene-1600.webp"
+      }
+    },
+    "repli": "assets/pochettes/pochette-laches-dans-larene-1600.jpg",
+    "basseDefinition": false
+  },
+  "pochette-imperturbable": {
+    "base": "pochette-imperturbable",
+    "categorie": "pochette",
+    "credit": null,
+    "largeur": 1012,
+    "hauteur": 1012,
+    "rapport": "1/1",
+    "alt": "Pochette de l'EP Imperturbable : intérieur de commerce aux rayonnages vitrés, dupliqué en miroir et viré au rouge sang, avec le nom TAOS en grandes lettres blanches brossées et le titre en dessous.",
+    "derives": {
+      "avif": {
+        "480": "assets/pochettes/pochette-imperturbable-480.avif",
+        "960": "assets/pochettes/pochette-imperturbable-960.avif"
+      },
+      "webp": {
+        "480": "assets/pochettes/pochette-imperturbable-480.webp",
+        "960": "assets/pochettes/pochette-imperturbable-960.webp"
+      }
+    },
+    "repli": "assets/pochettes/pochette-imperturbable-960.jpg",
+    "basseDefinition": false
+  },
+  "pochette-la-chute-des-fourbes": {
+    "base": "pochette-la-chute-des-fourbes",
+    "categorie": "pochette",
+    "credit": null,
+    "largeur": 700,
+    "hauteur": 700,
+    "rapport": "1/1",
+    "alt": "Pochette de La chute des fourbes, album paru sous le nom The Art of Sauvagia : un homme en costume renversé en arrière, un impact de balle sur la chemise, tandis qu'une silhouette encapuchonnée braque une arme derrière lui, le tout viré au bleu nuit.",
+    "derives": {
+      "avif": {
+        "480": "assets/pochettes/pochette-la-chute-des-fourbes-480.avif"
+      },
+      "webp": {
+        "480": "assets/pochettes/pochette-la-chute-des-fourbes-480.webp"
+      }
+    },
+    "repli": "assets/pochettes/pochette-la-chute-des-fourbes-480.jpg",
+    "basseDefinition": false
+  },
+  "pochette-shaka": {
+    "base": "pochette-shaka",
+    "categorie": "pochette",
+    "credit": null,
+    "largeur": 1458,
+    "hauteur": 1452,
+    "rapport": "243/242",
+    "alt": "Pochette du premier disque, paru sous le nom S.H.A.K.A. : illustration en noir et blanc d'un corbeau perché sur une antenne de télévision, sous une masse noire en forme de nuage, le nom du groupe en capitales rouges en haut à droite.",
+    "derives": {
+      "avif": {
+        "480": "assets/pochettes/pochette-shaka-480.avif",
+        "960": "assets/pochettes/pochette-shaka-960.avif"
+      },
+      "webp": {
+        "480": "assets/pochettes/pochette-shaka-480.webp",
+        "960": "assets/pochettes/pochette-shaka-960.webp"
+      }
+    },
+    "repli": "assets/pochettes/pochette-shaka-960.jpg",
+    "basseDefinition": false
+  },
+  "texture-pochette": {
+    "base": "texture-pochette",
+    "categorie": "texture",
+    "credit": null,
+    "poidsOctets": 6833,
+    "chemin": "assets/textures/texture-pochette.avif"
+  },
+  "plan-de-scene": {
+    "base": "plan-de-scene",
+    "categorie": "plan-de-scene",
+    "credit": null,
+    "largeur": 2512,
+    "hauteur": 1164,
+    "rapport": "628/291",
+    "alt": "Schéma du plan de scène de TAOS, vu de face, plaçant Steve à la guitare côté jardin, Micka à la batterie au centre avec le détail des micros et de la patch list, Jack au chant à l'avant-scène avec pédale de samples au sol, Arnaud à la basse et Etienne à la guitare côté cour, avec amplis, retours de scène et points d'alimentation électrique.",
+    "derives": {
+      "avif": {
+        "480": "assets/plan-de-scene/plan-de-scene-480.avif",
+        "960": "assets/plan-de-scene/plan-de-scene-960.avif",
+        "1600": "assets/plan-de-scene/plan-de-scene-1600.avif",
+        "2400": "assets/plan-de-scene/plan-de-scene-2400.avif"
+      },
+      "webp": {
+        "480": "assets/plan-de-scene/plan-de-scene-480.webp",
+        "960": "assets/plan-de-scene/plan-de-scene-960.webp",
+        "1600": "assets/plan-de-scene/plan-de-scene-1600.webp",
+        "2400": "assets/plan-de-scene/plan-de-scene-2400.webp"
+      }
+    },
+    "repli": "assets/plan-de-scene/plan-de-scene-2400.jpg"
+  },
+  "og": {
+    "base": "og",
+    "categorie": "partage",
+    "credit": "freakphotography666",
+    "largeur": 1200,
+    "hauteur": 630,
+    "rapport": "40/21",
+    "chemin": "public/og.jpg"
+  }
+}

@@ -1,0 +1,74 @@
+/*
+ * Feuille de style d'impression — chargée uniquement sur les pages dont le
+ * gabarit la demande : l'espace pro et une page de date. Fond blanc, texte
+ * noir, wordmark noir, URL des liens en clair, navigation et lecteurs masqués.
+ *
+ * Fichier servi tel quel sur un dépôt public : aucun renvoi à un document
+ * interne.
+ */
+
+@media print {
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #030303 !important;
+  }
+
+  /* Navigation, menu mobile, façades audio/vidéo et pied de page n'ont pas
+     de sens sur papier. */
+  .entete,
+  .facade-audio,
+  .facade-audio__iframe,
+  .pied-de-page {
+    display: none !important;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: #030303 !important;
+    text-decoration: underline;
+  }
+
+  /* URL des liens en clair : imprime la cible entre parenthèses, sauf pour
+     les ancres internes de page (#...) qui n'ont pas de sens hors écran. */
+  a[href^="http"]::after,
+  a[href^="/"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #444444;
+  }
+
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Le wordmark est un SVG inline en currentColor (page.mjs) : passer la
+     couleur du conteneur au noir suffit, pas besoin d'un second fichier. */
+  .entete__wordmark,
+  .ouverture__wordmark {
+    color: #030303 !important;
+  }
+
+  .ouverture__photo img,
+  .ecouter__pochette img {
+    filter: none !important;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+}

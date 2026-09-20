@@ -1,0 +1,7 @@
+# TAOS — préproduction (https://mboix.github.io/taosband)
+# Site de travail : fermé aux moteurs jusqu'à la mise en ligne.
+# Sous un sous-dossier, ce fichier n'est pas lu : la fermeture effective est la
+# balise <meta name="robots" content="noindex, nofollow"> de chaque page.
+
+User-agent: *
+Disallow: /

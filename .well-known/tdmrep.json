@@ -1,0 +1,19 @@
+{
+  "policies": [
+    {
+      "location": "/taosband/assets/*",
+      "tdm-reservation": 1,
+      "tdm-policy": "https://mboix.github.io/taosband/tdm-policy.json"
+    },
+    {
+      "location": "/taosband/og.jpg",
+      "tdm-reservation": 1,
+      "tdm-policy": "https://mboix.github.io/taosband/tdm-policy.json"
+    },
+    {
+      "location": "/taosband/pro/*.zip",
+      "tdm-reservation": 1,
+      "tdm-policy": "https://mboix.github.io/taosband/tdm-policy.json"
+    }
+  ]
+}
