@@ -97,8 +97,50 @@
     </p>
   </div>
 </footer>
+<div
+  class="lecteur-persistant"
+  id="lecteur-persistant"
+  hidden
+  data-lecteur
+  data-source-url="/taosband/assets/EXTRAITS.json"
+  data-album-titre="Lâchés dans l'arène"
+  data-pochette-url="/taosband/assets/pochettes/pochette-laches-dans-larene-1600.jpg"
+  data-pistes="[{&quot;slug&quot;:&quot;la-crise&quot;,&quot;titre&quot;:&quot;La crise&quot;,&quot;duree&quot;:75},{&quot;slug&quot;:&quot;encore-plus-profond&quot;,&quot;titre&quot;:&quot;Encore plus profond&quot;,&quot;duree&quot;:75},{&quot;slug&quot;:&quot;mauvais-exemple&quot;,&quot;titre&quot;:&quot;Mauvais exemple&quot;,&quot;duree&quot;:75},{&quot;slug&quot;:&quot;elle-etait-la&quot;,&quot;titre&quot;:&quot;Elle était là&quot;,&quot;duree&quot;:75},{&quot;slug&quot;:&quot;education-nationale&quot;,&quot;titre&quot;:&quot;Education nationale&quot;,&quot;duree&quot;:75},{&quot;slug&quot;:&quot;temps-mort&quot;,&quot;titre&quot;:&quot;Temps mort&quot;,&quot;duree&quot;:75}]"
+>
+  <p class="lecteur-persistant__annonce" role="status" aria-live="polite"></p>
+  <div class="lecteur-persistant__corps">
+    <img class="lecteur-persistant__pochette" src="/taosband/assets/pochettes/pochette-laches-dans-larene-1600.jpg" alt="" width="44" height="44">
+    <button type="button" class="lecteur-persistant__bouton lecteur-persistant__precedent" aria-label="Titre précédent"><svg class="lecteur-persistant__icone" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6h2v12H6zM20 6v12l-10-6z"/></svg></button>
+    <button type="button" class="lecteur-persistant__bouton lecteur-persistant__lecture" aria-pressed="false" aria-label="Lecture"><svg class="lecteur-persistant__icone lecteur-persistant__icone--lecture" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><svg class="lecteur-persistant__icone lecteur-persistant__icone--pause" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+    <button type="button" class="lecteur-persistant__bouton lecteur-persistant__suivant" aria-label="Titre suivant"><svg class="lecteur-persistant__icone" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 6h2v12h-2zM4 6l10 6-10 6z"/></svg></button>
+    <div class="lecteur-persistant__infos">
+      <p class="lecteur-persistant__titre-piste"></p>
+      <p class="lecteur-persistant__titre-album">Lâchés dans l'arène</p>
+    </div>
+    <div class="lecteur-persistant__onde">
+      <canvas class="lecteur-persistant__canevas" aria-hidden="true"></canvas>
+      <input
+        type="range"
+        class="lecteur-persistant__position"
+        min="0"
+        max="1000"
+        step="10"
+        value="0"
+        aria-label="Position dans l'extrait"
+        aria-valuetext="0:00"
+      >
+    </div>
+    <span class="lecteur-persistant__temps" aria-hidden="true"></span>
+    <a class="lecteur-persistant__album-complet" href="https://taosband.bandcamp.com/album/l-ch-s-dans-lar-ne">Album complet</a>
+    <button type="button" class="lecteur-persistant__bouton lecteur-persistant__fermeture" aria-label="Fermer le lecteur"><svg class="lecteur-persistant__icone" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m6.4 5 12.6 12.6-1.4 1.4L5 6.4z"/><path fill="currentColor" d="m5 17.6 12.6-12.6 1.4 1.4L6.4 19z"/></svg></button>
+  </div>
+  <audio class="lecteur-persistant__audio" preload="none"></audio>
+</div>
 <script src="/taosband/ouverture.js" defer></script>
 <script src="/taosband/facade.js" defer></script>
 <script src="/taosband/menu.js" defer></script>
+<script src="/taosband/ligne-up.js" defer></script>
+<script src="/taosband/lecteur.js" defer></script>
+<script src="/taosband/navigation.js" defer></script>
 </body>
 </html>

@@ -39,6 +39,20 @@
   // Les touches qui déplacent le rail, et elles seules.
   var TOUCHES_DU_RAIL = ["ArrowLeft", "ArrowRight", "Home", "End"];
 
+  // Retire les écouteurs scroll/resize posés par un appel précédent
+  // d'executer() (voir armerLaDerive) : window survit à un changement de
+  // page par navigation.js (§ 10.5), contrairement à .ouverture__photo, donc
+  // rien ne les retire tout seul. Remplacée à chaque armement, appelée au
+  // suivant.
+  var nettoyerEcouteursFenetre = function () {};
+
+  executer();
+  document.addEventListener("taos:page-changee", executer);
+
+  function executer() {
+  nettoyerEcouteursFenetre();
+  nettoyerEcouteursFenetre = function () {};
+
   var photo = document.querySelector(".ouverture__photo");
   if (!photo) return;
 
@@ -199,6 +213,10 @@
 
     window.addEventListener("scroll", demanderUneTrame, { passive: true });
     window.addEventListener("resize", demanderUneTrame);
+    nettoyerEcouteursFenetre = function () {
+      window.removeEventListener("scroll", demanderUneTrame);
+      window.removeEventListener("resize", demanderUneTrame);
+    };
     placer();
 
     function demanderUneTrame() {
@@ -230,5 +248,6 @@
   function ecouter(requete, reaction) {
     if (requete.addEventListener) requete.addEventListener("change", reaction);
     else requete.addListener(reaction);
+  }
   }
 })();

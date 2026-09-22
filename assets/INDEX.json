@@ -63,26 +63,6 @@
     },
     "repli": "assets/photos/taos-live-3-1600.jpg"
   },
-  "taos-portrait-arnaud": {
-    "base": "taos-portrait-arnaud",
-    "categorie": "photo",
-    "credit": "freakphotography666",
-    "largeur": 1000,
-    "hauteur": 1600,
-    "rapport": "5/8",
-    "alt": "Portrait de scène en noir et blanc d'Arnaud, bassiste de TAOS, jouant de sa basse, éclairé de face dans la pénombre.",
-    "derives": {
-      "avif": {
-        "480": "assets/photos/taos-portrait-arnaud-480.avif",
-        "960": "assets/photos/taos-portrait-arnaud-960.avif"
-      },
-      "webp": {
-        "480": "assets/photos/taos-portrait-arnaud-480.webp",
-        "960": "assets/photos/taos-portrait-arnaud-960.webp"
-      }
-    },
-    "repli": "assets/photos/taos-portrait-arnaud-960.jpg"
-  },
   "taos-portrait-etienne": {
     "base": "taos-portrait-etienne",
     "categorie": "photo",
@@ -142,6 +122,26 @@
       }
     },
     "repli": "assets/photos/taos-portrait-micka-960.jpg"
+  },
+  "taos-portrait-moule": {
+    "base": "taos-portrait-moule",
+    "categorie": "photo",
+    "credit": "freakphotography666",
+    "largeur": 1000,
+    "hauteur": 1600,
+    "rapport": "5/8",
+    "alt": "Portrait de scène en noir et blanc de Moule, bassiste de TAOS, jouant de sa basse, éclairé de face dans la pénombre.",
+    "derives": {
+      "avif": {
+        "480": "assets/photos/taos-portrait-moule-480.avif",
+        "960": "assets/photos/taos-portrait-moule-960.avif"
+      },
+      "webp": {
+        "480": "assets/photos/taos-portrait-moule-480.webp",
+        "960": "assets/photos/taos-portrait-moule-960.webp"
+      }
+    },
+    "repli": "assets/photos/taos-portrait-moule-960.jpg"
   },
   "taos-portrait-steve": {
     "base": "taos-portrait-steve",

@@ -988,7 +988,7 @@ section + section {
   font-weight: 600;
 }
 
-/* --- Vous programmez ? ------------------------------------------------------ */
+/* --- Nous programmer -------------------------------------------------------- */
 
 .pro-invitation__resume {
   margin-top: var(--espace-2);
@@ -1475,4 +1475,231 @@ section + section {
 
 .page-erreur .groupe-boutons {
   justify-content: center;
+}
+
+/* --- Lecteur maison persistant --------------------------------------------
+ * Vit hors de <main>, dans l'enveloppe de page : c'est cet emplacement, pas
+ * cette feuille de style, qui la fait survivre à l'échange de contenu du
+ * module de navigation. Masquée tant que personne n'écoute (attribut hidden,
+ * posé par le serveur) ; aucune transition d'apparition n'est posée ici, la
+ * révélation est immédiate à dessein (prefers-reduced-motion). */
+.lecteur-persistant {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 50;
+  background: var(--fond-2);
+  border-top: 1px solid var(--kaki-2);
+  color: var(--texte);
+}
+
+.lecteur-persistant[hidden] {
+  display: none;
+}
+
+/* Zone d'annonce (échec de chargement) : hors écran, lue par une synthèse
+   vocale seulement quand son texte change. */
+.lecteur-persistant__annonce {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.lecteur-persistant__corps {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-2);
+  padding: var(--espace-1) var(--espace-2);
+  max-width: var(--largeur-max);
+  margin-inline: auto;
+}
+
+.lecteur-persistant__pochette {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.lecteur-persistant__bouton {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 2px;
+  color: var(--texte);
+}
+
+.lecteur-persistant__bouton:hover {
+  color: var(--kaki-4);
+}
+
+.lecteur-persistant__icone {
+  width: 22px;
+  height: 22px;
+}
+
+/* Bouton lecture/pause : seul bouton plein de la barre, comme le bouton
+   principal de la charte. */
+.lecteur-persistant__lecture {
+  background: var(--kaki-3);
+  color: var(--fond);
+}
+
+.lecteur-persistant__lecture:hover {
+  background: var(--kaki-4);
+  color: var(--fond);
+}
+
+.lecteur-persistant__infos {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.lecteur-persistant__titre-piste {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lecteur-persistant__titre-album {
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Forme d'onde : canevas décoratif (aria-hidden) doublé d'un curseur
+   <input type="range"> transparent superposé, seul élément réellement
+   interactif — utilisable au clavier et lu par une synthèse vocale. */
+.lecteur-persistant__onde {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 60px;
+  height: 32px;
+}
+
+.lecteur-persistant__canevas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lecteur-persistant__position {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.lecteur-persistant__position:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--kaki-4);
+  outline-offset: 2px;
+}
+
+.lecteur-persistant__temps {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-petit);
+  color: var(--texte-2);
+  white-space: nowrap;
+}
+
+.lecteur-persistant__album-complet {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Sous 600 px, la barre garde le bouton lecture, le titre et l'onde ; le
+   reste passe en second rang plutôt que de faire déborder la barre
+   (charte § 3.7). */
+@media (max-width: 37.49em) {
+  .lecteur-persistant__pochette,
+  .lecteur-persistant__precedent,
+  .lecteur-persistant__suivant,
+  .lecteur-persistant__titre-album,
+  .lecteur-persistant__album-complet {
+    display: none;
+  }
+}
+
+/* Le bouton porte les deux glyphes ; `aria-pressed` décide de celui qu'on voit.
+   L'état visible et l'état annoncé viennent ainsi du même attribut et ne
+   peuvent pas diverger. */
+.lecteur-persistant__lecture .lecteur-persistant__icone--pause,
+.lecteur-persistant__lecture[aria-pressed="true"] .lecteur-persistant__icone--lecture {
+  display: none;
+}
+
+.lecteur-persistant__lecture[aria-pressed="true"] .lecteur-persistant__icone--pause {
+  display: block;
+}
+
+/* --- Déclencheurs d'écoute dans les pages ---------------------------------
+   Les boutons qui lancent un extrait dans la barre : un par titre dans une
+   tracklist, un principal dans un bloc « Écouter ». */
+
+.bouton-ecoute {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 1px solid var(--kaki-2);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--kaki-3);
+  cursor: pointer;
+}
+
+.bouton-ecoute:hover {
+  color: var(--kaki-4);
+  border-color: var(--kaki-3);
+}
+
+.bouton-ecoute:focus-visible {
+  outline: 2px solid var(--kaki-4);
+  outline-offset: 2px;
+}
+
+.bouton-ecoute .lecteur-persistant__icone {
+  width: 20px;
+  height: 20px;
+}
+
+/* La cellule du titre porte le bouton : aligner les deux sur une ligne plutôt
+   que de laisser le texte retomber sous le bouton sur une ligne longue. */
+.tracklist__titre {
+  display: flex;
+  align-items: center;
+}
+
+.bouton-ecoute-principal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.bouton-ecoute-principal .lecteur-persistant__icone {
+  width: 20px;
+  height: 20px;
 }
