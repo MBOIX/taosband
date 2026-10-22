@@ -330,6 +330,15 @@ section + section {
   padding-block: var(--espace-2);
 }
 
+/* Wordmark et baseline empilés, fer à gauche : la baseline déplie le sigle
+   sous les lettres, en petit et en texte secondaire pour rester discrète. */
+.entete__marque {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espace-1);
+}
+
 .entete__wordmark {
   color: var(--blanc);
   display: block;
@@ -339,6 +348,15 @@ section + section {
 .entete__wordmark svg {
   width: 96px;
   height: auto;
+}
+
+.entete__baseline {
+  margin: 0;
+  font-size: var(--fs-petit);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--texte-2);
+  white-space: nowrap;
 }
 
 .nav-principale {
